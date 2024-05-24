@@ -11,7 +11,7 @@ from fastapi import Request, status, File, UploadFile
 from fastapi.responses import Response
 from jose.exceptions import JWTError
 from sqlalchemy.exc import PendingRollbackError
-from sqlalchemy.orm import Session
+from sqlalchemy.orm import Session, defer
 from unidecode import unidecode
 
 from app.config.config import (
@@ -824,7 +824,7 @@ class LocalImpl:
         s_family_group = []
 
         family_group = (
-            self.db.query(model_person)
+            self.db.query(model_person).options(defer(model_person.identification_front_image), defer(model_person.identification_back_image))
             .where(
                 model_person.identification_number_master
                 == identification_number_master
