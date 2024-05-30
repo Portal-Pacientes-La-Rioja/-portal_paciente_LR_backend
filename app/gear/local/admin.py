@@ -1,6 +1,6 @@
 from typing import List, Union, Optional
 
-from sqlalchemy.orm import Session
+from sqlalchemy.orm import Session, defer
 
 from app.models.institutions import Institutions as model_institution
 from app.models.person import Person as model_person
@@ -50,6 +50,7 @@ def list_persons_family_group_to_accept(db: Session, username: Optional[str] = N
             model_person.id_usual_institution,
             model_person.inst_from_portal,
         )
+        .options(defer(model_person.identification_front_image), defer(model_person.identification_back_image))
         .where(cond)
         .where(cond_institution)
         .all()
