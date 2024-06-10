@@ -40,7 +40,6 @@ def list_persons_family_group_to_accept(db: Session, username: Optional[str] = N
 
     p_list = (
         db.query(
-            model_person,
             model_person.id,
             model_person.surname,
             model_person.name,
@@ -50,7 +49,6 @@ def list_persons_family_group_to_accept(db: Session, username: Optional[str] = N
             model_person.id_usual_institution,
             model_person.inst_from_portal,
         )
-        .options(defer(model_person.identification_front_image), defer(model_person.identification_back_image))
         .where(cond)
         .where(cond_institution)
         .all()
