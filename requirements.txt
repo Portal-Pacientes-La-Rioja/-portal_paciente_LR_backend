@@ -48,7 +48,7 @@ pyasn1==0.4.8
 pycparser==2.21
 pydantic==1.8.2
 pydantic-sqlalchemy==0.0.9
-PyMySQL==1.0.2
+PyMySQL==1.1.1
 pynvim==0.4.3
 pyparsing==3.0.6
 pytest==6.2.5
