@@ -55,7 +55,7 @@ pytest==6.2.5
 pytest-mock==3.6.1
 python-dotenv==0.19.2
 python-jose==3.3.0
-python-multipart==0.0.5
+python-multipart==0.0.7
 PyYAML==5.4.1
 redis==4.1.4
 requests==2.26.0
